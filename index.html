@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felicidades</title>
+    <style>
+        /* Estilos básicos y gradiente */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb, #fbc2eb, #a1c4fd);
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /* Contenedor de contenido */
+        .content {
+            text-align: center;
+            transition: opacity 1s ease;
+            opacity: 1;
+            padding: 20px;
+        }
+
+        /* Texto principal */
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 1em;
+        }
+
+        /* Estilo de los botones numerados */
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button {
+            background-color: #ffffff88;
+            border: none;
+            font-size: 1.2em;
+            color: #333;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        button:disabled {
+            background-color: #ffffff55;
+            cursor: not-allowed;
+        }
+
+        button:hover:enabled {
+            background-color: #ffffffaa;
+            transform: scale(1.1);
+        }
+
+        /* Animación de transición de página */
+        .fade {
+            opacity: 0;
+        }
+
+        /* Ajustes responsivos para pantallas pequeñas */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            button {
+                width: 40px;
+                height: 40px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1 id="text">Felicidades cielo</h1>
+        <div class="button-container" id="buttons">
+            <button onclick="nextText('Eres...', 1)">1</button>
+            <button onclick="nextText('Maravillosa ❤️', 2)" disabled>2</button>
+            <button onclick="nextText('Bonita ❤️', 3)" disabled>3</button>
+            <button onclick="nextText('Brillante ❤️', 4)" disabled>4</button>
+            <button onclick="nextText('Fuerte ❤️', 5)" disabled>5</button>
+            <button onclick="nextText('Especial ❤️', 6)" disabled>6</button>
+            <button onclick="nextText('Talentosa ❤️', 7)" disabled>7</button>
+            <button onclick="nextText('Única ❤️', 8)" disabled>8</button>
+            <button onclick="nextText('Pero sobre todo mi chica ❤️', 9)" disabled>9</button>
+        </div>
+    </div>
+
+    <script>
+        function nextText(newText, buttonIndex) {
+            const content = document.querySelector('.content');
+            const textElement = document.getElementById('text');
+            const buttons = document.querySelectorAll('.button-container button');
+
+            // Animación de salida
+            content.classList.add('fade');
+
+            // Cambio de texto y animación de entrada
+            setTimeout(() => {
+                textElement.textContent = newText;
+                content.classList.remove('fade');
+                
+                // Desbloquear el siguiente botón
+                if (buttonIndex < buttons.length) {
+                    buttons[buttonIndex].disabled = false;
+                }
+            }, 1000); // Espera 1 segundo para cambiar el texto
+        }
+    </script>
+</body>
+</html>
